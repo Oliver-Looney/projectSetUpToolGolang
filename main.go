@@ -1,14 +1,21 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"os"
 	"os/exec"
 )
 
 func main() {
-	var DIRECTORY = "/home/oliver/MyGitHub/" + os.Args[1]
-	var GIT_REPO_LINK = os.Args[2]
+	var projectDir, projectName, GIT_REPO_LINK string
+	fmt.Println("Enter Project directory:")
+	fmt.Scan(&projectDir)
+	fmt.Println("Enter Project name:")
+	fmt.Scan(&projectName)
+	fmt.Println("Enter git origin:")
+	fmt.Scan(&GIT_REPO_LINK)
+	var DIRECTORY = projectDir + projectName
 
 	err := os.Mkdir(DIRECTORY, 0755)
 	if err != nil {
