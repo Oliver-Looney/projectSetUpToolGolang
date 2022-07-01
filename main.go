@@ -8,14 +8,12 @@ import (
 )
 
 func main() {
-	var projectDir, projectName, GIT_REPO_LINK string
-	fmt.Println("Enter Project directory:")
-	fmt.Scan(&projectDir)
+	var projectName, GIT_REPO_LINK string
 	fmt.Println("Enter Project name:")
 	fmt.Scan(&projectName)
 	fmt.Println("Enter git origin:")
 	fmt.Scan(&GIT_REPO_LINK)
-	var DIRECTORY = projectDir + projectName
+	var DIRECTORY = "/home/oliver/MyGitHub/" + projectName
 
 	err := os.Mkdir(DIRECTORY, 0755)
 	if err != nil {
@@ -32,4 +30,6 @@ func main() {
 	exec.Command("git", "commit", "-m", "\"initial commit\"").Run()
 	exec.Command("git", "push", "-u", "origin", "main").Run()
 	exec.Command("code", ".").Run()
+
+	println("Created: " + DIRECTORY + " with git initialized, pointing to " + GIT_REPO_LINK)
 }
